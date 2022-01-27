@@ -45,12 +45,12 @@ func NewTempRegistry(ctx context.Context, root string) *tmpRegistryServer {
 			"filesystem": configuration.Parameters{"rootdirectory": root},
 		},
 	}
-	cfg.Log.Level = "error"
+	cfg.Log.Level = "debug"
 	cfg.HTTP.Headers = http.Header{
 		"X-Content-Type-Options": []string{"nosniff"},
 	}
 
-	l, err := logrus.ParseLevel("panic")
+	l, err := logrus.ParseLevel("debug")
 	if err != nil {
 		l = logrus.ErrorLevel
 	}
