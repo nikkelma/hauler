@@ -835,8 +835,8 @@ github.com/mwitkow/go-conntrack v0.0.0-20190716064945-2f068394615f/go.mod h1:qRW
 github.com/mxk/go-flowrate v0.0.0-20140419014527-cca7078d478f/go.mod h1:ZdcZmHo+o7JKHSa8/e818NopupXU1YMK5fe1lsApnBw=
 github.com/ncw/swift v1.0.47/go.mod h1:23YIA4yWVnGwv2dQlN4bB7egfYX6YLn0Yo/S6zZO/ZM=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
-github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220127171536-3121877f0f0f h1:k8wQgjW3go6QJsYxGG0dYkOZcDaDQN1n3oku4EcRhQ0=
-github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220127171536-3121877f0f0f/go.mod h1:6r5oFgzRppLFYQ18Z/cJJH6VgiJY0Y3nFPvveGhABYY=
+github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220127174339-613657f90e7d h1:N+u63X1aFxX0wAZF8/XW4uH8FI2B8cfkcME9iqLI9gs=
+github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220127174339-613657f90e7d/go.mod h1:SNJjCZB8KcVReBllRJuPfnQUpk9Wf7FDD/lVoqntTtY=
 github.com/nwaples/rardecode v1.1.0 h1:vSxaY8vQhOcVr4mm5e8XllHWTiM4JF507A0Katqw7MQ=
 github.com/nwaples/rardecode v1.1.0/go.mod h1:5DzqNKiOdpKKBH87u8VlvAnPZMXcGRhxWkRpHbbfGS0=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
