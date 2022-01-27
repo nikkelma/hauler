@@ -46,7 +46,7 @@ func CopyCmd(ctx context.Context, o *CopyOpts, s *store.Layout, targetRef string
 
 		ds, err := s.CopyAll(ctx, fs, nil)
 		if err != nil {
-			return err
+			return fmt.Errorf("dir copy all: %w", err)
 		}
 		descs = ds
 
@@ -60,20 +60,20 @@ func CopyCmd(ctx context.Context, o *CopyOpts, s *store.Layout, targetRef string
 		}
 		r, err := content.NewRegistry(ropts)
 		if err != nil {
-			return err
+			return fmt.Errorf("new registry: %w", err)
 		}
 
 		mapperFn := func(ref string) (string, error) {
 			r, err := reference.Relocate(ref, components[1])
 			if err != nil {
-				return "", err
+				return "", fmt.Errorf("relocate ref %s: %w", ref, err)
 			}
 			return r.Name(), nil
 		}
 
 		ds, err := s.CopyAll(ctx, r, mapperFn)
 		if err != nil {
-			return err
+			return fmt.Errorf("reg copy all: %w", err)
 		}
 		descs = ds
 

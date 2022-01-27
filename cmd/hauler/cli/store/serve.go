@@ -45,12 +45,12 @@ func ServeCmd(ctx context.Context, o *ServeOpts, s *store.Layout) error {
 
 	tr := server.NewTempRegistry(ctx, o.RootDir)
 	if err := tr.Start(); err != nil {
-		return err
+		return fmt.Errorf("start: %w", err)
 	}
 
 	opts := &CopyOpts{}
 	if err := CopyCmd(ctx, opts, s, "registry://"+tr.Registry()); err != nil {
-		return err
+		return fmt.Errorf("copy cmd: %w", err)
 	}
 
 	tr.Close()
@@ -59,18 +59,18 @@ func ServeCmd(ctx context.Context, o *ServeOpts, s *store.Layout) error {
 	if o.ConfigFile != "" {
 		ucfg, err := loadConfig(o.ConfigFile)
 		if err != nil {
-			return err
+			return fmt.Errorf("load config: %w", err)
 		}
 		cfg = ucfg
 	}
 
 	r, err := server.NewRegistry(ctx, cfg)
 	if err != nil {
-		return err
+		return fmt.Errorf("new registry: %w", err)
 	}
 
 	if err = r.ListenAndServe(); err != nil {
-		return err
+		return fmt.Errorf("listen and serve: %w", err)
 	}
 	return nil
 }
