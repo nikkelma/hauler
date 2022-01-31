@@ -24,7 +24,7 @@ require (
 
 replace (
 	github.com/go-logr/logr v1.2.0 => github.com/go-logr/logr v0.4.0
-	github.com/rancherfederal/ocil v0.1.9 => github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220127174339-613657f90e7d
+	github.com/rancherfederal/ocil v0.1.9 => github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220131191615-b355cf198378
 	k8s.io/klog/v2 v2.30.0 => k8s.io/klog/v2 v2.9.0
 )
 
