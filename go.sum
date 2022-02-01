@@ -817,8 +817,8 @@ github.com/ncw/swift v1.0.47/go.mod h1:23YIA4yWVnGwv2dQlN4bB7egfYX6YLn0Yo/S6zZO/
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
 github.com/nikkelma/oras-project_oras-go v1.1.1-0.20220201001104-a75f6a419090 h1:iYYKmY3xq8gY3Hs4RGsv8GNL96uYa8dF9NzL/YRYl0M=
 github.com/nikkelma/oras-project_oras-go v1.1.1-0.20220201001104-a75f6a419090/go.mod h1:7QVDcWxi8PzSZ0Z7LwYzdNIp3S67QT9lbo00wbzSmUk=
-github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220201001359-8f247e877459 h1:AsV3MpCY0oN0/q0QBjuc3qN93GlL2jXXmbthk4taNLc=
-github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220201001359-8f247e877459/go.mod h1:QPejfBYdYoHk0cUYef3jTe1GFVSmKZ9STwnwdFEURK0=
+github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220201003110-b96ce3ebf457 h1:h2LpRDlmgoJWbm6ftpHp4Amw7hm0BRNj7TO06t5ORMk=
+github.com/nikkelma/rancherfederal_ocil v0.1.10-0.20220201003110-b96ce3ebf457/go.mod h1:QPejfBYdYoHk0cUYef3jTe1GFVSmKZ9STwnwdFEURK0=
 github.com/nwaples/rardecode v1.1.0 h1:vSxaY8vQhOcVr4mm5e8XllHWTiM4JF507A0Katqw7MQ=
 github.com/nwaples/rardecode v1.1.0/go.mod h1:5DzqNKiOdpKKBH87u8VlvAnPZMXcGRhxWkRpHbbfGS0=
 github.com/nxadm/tail v1.4.4/go.mod h1:kenIhsEOeOJmVchQTgglprH7qJGnHDVpk1VPCcaMI8A=
