@@ -30,7 +30,7 @@ func ListCmd(ctx context.Context, o *ListOpts, s *store.Store) error {
 		return err
 	}
 
-	tw := tabwriter.NewWriter(os.Stdout, 0, 8, 0, '\t', 0)
+	tw := tabwriter.NewWriter(os.Stdout, 1, 1, 3, ' ', 0)
 	defer tw.Flush()
 
 	fmt.Fprintf(tw, "Reference\tTag/Digest\n")
