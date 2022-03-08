@@ -37,8 +37,8 @@ func (o *Opts) AddArgs(cmd *cobra.Command) {
 	f.StringVarP(&o.DestinationDir, "output", "o", "", "Directory to save contents to (defaults to current directory)")
 	f.StringVarP(&o.Username, "username", "u", "", "Username when copying to an authenticated remote registry")
 	f.StringVarP(&o.Password, "password", "p", "", "Password when copying to an authenticated remote registry")
-	f.BoolVar(&o.Insecure, "insecure", false, "Toggle allowing insecure connections when copying to a remote registry")
-	f.BoolVar(&o.PlainHTTP, "plain-http", false, "Toggle allowing plain http connections when copying to a remote registry")
+	f.BoolVar(&o.Insecure, "insecure", false, "Allow insecure connections when copying to a remote registry")
+	f.BoolVar(&o.PlainHTTP, "plain-http", false, "Allow plain http connections when copying to a remote registry")
 }
 
 func Cmd(ctx context.Context, o *Opts, reference string) error {
@@ -47,14 +47,11 @@ func Cmd(ctx context.Context, o *Opts, reference string) error {
 	cs := content.NewFileStore(o.DestinationDir)
 	defer cs.Close()
 
-	// build + configure oras client
+	// build and configure crane, oras clients
 	var refOpts []name.Option
+	var registryOpts []docker.RegistryOpt
 	remoteOpts := []remote.Option{
 		remote.WithAuthFromKeychain(authn.DefaultKeychain),
-	}
-
-	if o.PlainHTTP {
-		refOpts = append(refOpts, name.Insecure)
 	}
 
 	if o.Username != "" || o.Password != "" {
@@ -63,23 +60,7 @@ func Cmd(ctx context.Context, o *Opts, reference string) error {
 			Password: o.Password,
 		}
 		remoteOpts = append(remoteOpts, remote.WithAuth(basicAuth))
-	}
 
-	if o.Insecure {
-		transport := http.DefaultTransport.(*http.Transport).Clone()
-		transport.TLSClientConfig.InsecureSkipVerify = true
-
-		remoteOpts = append(remoteOpts, remote.WithTransport(transport))
-	}
-
-	// build + configure containerd client
-	var registryOpts []docker.RegistryOpt
-
-	if o.PlainHTTP {
-		registryOpts = append(registryOpts, docker.WithPlainHTTP(docker.MatchAllHosts))
-	}
-
-	if o.Username != "" || o.Password != "" {
 		creds := func(string) (string, string, error) {
 			return o.Username, o.Password, nil
 		}
@@ -91,10 +72,17 @@ func Cmd(ctx context.Context, o *Opts, reference string) error {
 		transport := http.DefaultTransport.(*http.Transport).Clone()
 		transport.TLSClientConfig.InsecureSkipVerify = true
 
+		remoteOpts = append(remoteOpts, remote.WithTransport(transport))
+
 		httpClient := &http.Client{
 			Transport: transport,
 		}
 		registryOpts = append(registryOpts, docker.WithClient(httpClient))
+	}
+
+	if o.PlainHTTP {
+		refOpts = append(refOpts, name.Insecure)
+		registryOpts = append(registryOpts, docker.WithPlainHTTP(docker.MatchAllHosts))
 	}
 
 	resolverOpts := docker.ResolverOptions{
@@ -105,7 +93,7 @@ func Cmd(ctx context.Context, o *Opts, reference string) error {
 
 	resolver := docker.NewResolver(resolverOpts)
 
-	// begin dowloading target
+	// begin downloading target
 	ref, err := name.ParseReference(reference, refOpts...)
 	if err != nil {
 		return err
