@@ -8,7 +8,7 @@ import (
 	"github.com/google/go-containerregistry/pkg/v1/partial"
 	gtypes "github.com/google/go-containerregistry/pkg/v1/types"
 
-	"github.com/rancherfederal/hauler/pkg/artifact/types"
+	"github.com/nikkelma/hauler/pkg/artifact/types"
 )
 
 var _ partial.Describable = (*config)(nil)

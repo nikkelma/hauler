@@ -10,8 +10,8 @@ import (
 
 	"github.com/google/go-containerregistry/pkg/name"
 
-	artifacts "github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/content/image"
+	artifacts "github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/content/image"
 )
 
 var (

@@ -7,7 +7,7 @@ import (
 
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 
-	"github.com/rancherfederal/hauler/pkg/artifact/local"
+	"github.com/nikkelma/hauler/pkg/artifact/local"
 )
 
 type fs struct {

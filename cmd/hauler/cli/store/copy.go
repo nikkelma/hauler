@@ -7,8 +7,8 @@ import (
 	"github.com/google/go-containerregistry/pkg/v1/remote"
 	"github.com/spf13/cobra"
 
-	"github.com/rancherfederal/hauler/pkg/log"
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/pkg/log"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 type CopyOpts struct{}

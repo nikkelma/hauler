@@ -9,9 +9,9 @@ import (
 	"github.com/google/go-containerregistry/pkg/name"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/cache"
-	"github.com/rancherfederal/hauler/pkg/layout"
+	"github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/cache"
+	"github.com/nikkelma/hauler/pkg/layout"
 )
 
 // AddArtifact will add an artifact.OCI to the store

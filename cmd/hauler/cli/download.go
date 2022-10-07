@@ -3,7 +3,7 @@ package cli
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/rancherfederal/hauler/cmd/hauler/cli/download"
+	"github.com/nikkelma/hauler/cmd/hauler/cli/download"
 )
 
 func addDownload(parent *cobra.Command) {

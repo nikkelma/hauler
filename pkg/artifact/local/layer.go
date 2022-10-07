@@ -6,7 +6,7 @@ import (
 	v1 "github.com/google/go-containerregistry/pkg/v1"
 	gtypes "github.com/google/go-containerregistry/pkg/v1/types"
 
-	"github.com/rancherfederal/hauler/pkg/artifact/types"
+	"github.com/nikkelma/hauler/pkg/artifact/types"
 )
 
 func LayerFromOpener(opener Opener, opts ...LayerOption) (v1.Layer, error) {

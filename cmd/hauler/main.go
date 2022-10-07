@@ -4,8 +4,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/rancherfederal/hauler/cmd/hauler/cli"
-	"github.com/rancherfederal/hauler/pkg/log"
+	"github.com/nikkelma/hauler/cmd/hauler/cli"
+	"github.com/nikkelma/hauler/pkg/log"
 )
 
 func main() {

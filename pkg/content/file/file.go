@@ -11,9 +11,9 @@ import (
 	gtypes "github.com/google/go-containerregistry/pkg/v1/types"
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/artifact/local"
-	"github.com/rancherfederal/hauler/pkg/artifact/types"
+	"github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/artifact/local"
+	"github.com/nikkelma/hauler/pkg/artifact/types"
 )
 
 var _ artifact.OCI = (*file)(nil)

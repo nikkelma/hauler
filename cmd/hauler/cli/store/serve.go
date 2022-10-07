@@ -10,7 +10,7 @@ import (
 	"github.com/distribution/distribution/v3/registry"
 	"github.com/spf13/cobra"
 
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 type ServeOpts struct {

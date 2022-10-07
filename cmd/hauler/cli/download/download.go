@@ -17,9 +17,9 @@ import (
 	"oras.land/oras-go/pkg/content"
 	"oras.land/oras-go/pkg/oras"
 
-	"github.com/rancherfederal/hauler/pkg/artifact/types"
-	"github.com/rancherfederal/hauler/pkg/log"
-	"github.com/rancherfederal/hauler/pkg/version"
+	"github.com/nikkelma/hauler/pkg/artifact/types"
+	"github.com/nikkelma/hauler/pkg/log"
+	"github.com/nikkelma/hauler/pkg/version"
 )
 
 type Opts struct {

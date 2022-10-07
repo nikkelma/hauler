@@ -3,7 +3,7 @@ package cli
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/rancherfederal/hauler/cmd/hauler/cli/store"
+	"github.com/nikkelma/hauler/cmd/hauler/cli/store"
 )
 
 func addStore(parent *cobra.Command) {

@@ -7,8 +7,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/yaml"
 
-	"github.com/rancherfederal/hauler/pkg/apis/hauler.cattle.io/v1alpha1"
-	"github.com/rancherfederal/hauler/pkg/apis/hauler.cattle.io/v1alpha2"
+	"github.com/nikkelma/hauler/pkg/apis/hauler.cattle.io/v1alpha1"
+	"github.com/nikkelma/hauler/pkg/apis/hauler.cattle.io/v1alpha2"
 )
 
 func Load(data []byte) (schema.ObjectKind, error) {

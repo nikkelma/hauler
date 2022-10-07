@@ -9,9 +9,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/rancherfederal/hauler/pkg/cache"
-	"github.com/rancherfederal/hauler/pkg/log"
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/pkg/cache"
+	"github.com/nikkelma/hauler/pkg/log"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 type rootOpts struct {

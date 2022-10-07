@@ -20,7 +20,7 @@ import (
 	// Init filesystem distribution storage driver
 	_ "github.com/distribution/distribution/v3/registry/storage/driver/filesystem"
 
-	"github.com/rancherfederal/hauler/pkg/cache"
+	"github.com/nikkelma/hauler/pkg/cache"
 )
 
 var (

@@ -9,10 +9,10 @@ import (
 
 	"github.com/google/go-containerregistry/pkg/name"
 
-	"github.com/rancherfederal/hauler/pkg/apis/hauler.cattle.io/v1alpha1"
-	"github.com/rancherfederal/hauler/pkg/content/image"
-	"github.com/rancherfederal/hauler/pkg/log"
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/pkg/apis/hauler.cattle.io/v1alpha1"
+	"github.com/nikkelma/hauler/pkg/content/image"
+	"github.com/nikkelma/hauler/pkg/log"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 func TestImage_Copy(t *testing.T) {

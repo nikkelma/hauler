@@ -5,9 +5,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/rancherfederal/hauler/cmd/hauler/cli/download"
-	"github.com/rancherfederal/hauler/pkg/layout"
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/cmd/hauler/cli/download"
+	"github.com/nikkelma/hauler/pkg/layout"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 type ExtractOpts struct {

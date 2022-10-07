@@ -16,9 +16,9 @@ import (
 	"helm.sh/helm/v3/pkg/chart/loader"
 	"helm.sh/helm/v3/pkg/cli"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/artifact/local"
-	"github.com/rancherfederal/hauler/pkg/artifact/types"
+	"github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/artifact/local"
+	"github.com/nikkelma/hauler/pkg/artifact/types"
 )
 
 var _ artifact.OCI = (*Chart)(nil)

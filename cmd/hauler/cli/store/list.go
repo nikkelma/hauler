@@ -9,7 +9,7 @@ import (
 	"github.com/google/go-containerregistry/pkg/name"
 	"github.com/spf13/cobra"
 
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 type ListOpts struct{}

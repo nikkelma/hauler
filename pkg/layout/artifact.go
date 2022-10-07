@@ -16,7 +16,7 @@ import (
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/artifact"
 )
 
 // Path is a wrapper around layout.Path

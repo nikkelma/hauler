@@ -5,9 +5,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/log"
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/log"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 // TODO: This is not at all a good test, we really just need to test the added collections functionality (like image scanning)

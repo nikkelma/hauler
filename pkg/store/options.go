@@ -1,6 +1,6 @@
 package store
 
-import "github.com/rancherfederal/hauler/pkg/cache"
+import "github.com/nikkelma/hauler/pkg/cache"
 
 // Options defines options for Store
 type Options func(*Store)

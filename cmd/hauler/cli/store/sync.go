@@ -10,14 +10,14 @@ import (
 	"github.com/spf13/cobra"
 	"k8s.io/apimachinery/pkg/util/yaml"
 
-	"github.com/rancherfederal/hauler/pkg/apis/hauler.cattle.io/v1alpha1"
-	"github.com/rancherfederal/hauler/pkg/apis/hauler.cattle.io/v1alpha2"
-	tchart "github.com/rancherfederal/hauler/pkg/collection/chart"
-	"github.com/rancherfederal/hauler/pkg/collection/imagetxt"
-	"github.com/rancherfederal/hauler/pkg/collection/k3s"
-	"github.com/rancherfederal/hauler/pkg/content"
-	"github.com/rancherfederal/hauler/pkg/log"
-	"github.com/rancherfederal/hauler/pkg/store"
+	"github.com/nikkelma/hauler/pkg/apis/hauler.cattle.io/v1alpha1"
+	"github.com/nikkelma/hauler/pkg/apis/hauler.cattle.io/v1alpha2"
+	tchart "github.com/nikkelma/hauler/pkg/collection/chart"
+	"github.com/nikkelma/hauler/pkg/collection/imagetxt"
+	"github.com/nikkelma/hauler/pkg/collection/k3s"
+	"github.com/nikkelma/hauler/pkg/content"
+	"github.com/nikkelma/hauler/pkg/log"
+	"github.com/nikkelma/hauler/pkg/store"
 )
 
 type SyncOpts struct {

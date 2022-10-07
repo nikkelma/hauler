@@ -3,9 +3,9 @@ package chart
 import (
 	gname "github.com/google/go-containerregistry/pkg/name"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/content/chart"
-	"github.com/rancherfederal/hauler/pkg/content/image"
+	"github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/content/chart"
+	"github.com/nikkelma/hauler/pkg/content/image"
 )
 
 var _ artifact.Collection = (*tchart)(nil)

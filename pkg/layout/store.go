@@ -16,7 +16,7 @@ import (
 	orascontent "oras.land/oras-go/pkg/content"
 	"oras.land/oras-go/pkg/oras"
 
-	"github.com/rancherfederal/hauler/pkg/artifact/types"
+	"github.com/nikkelma/hauler/pkg/artifact/types"
 )
 
 // interface guards

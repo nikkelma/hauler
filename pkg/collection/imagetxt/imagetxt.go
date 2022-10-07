@@ -9,10 +9,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/artifact/local"
-	"github.com/rancherfederal/hauler/pkg/content/image"
-	"github.com/rancherfederal/hauler/pkg/log"
+	"github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/artifact/local"
+	"github.com/nikkelma/hauler/pkg/content/image"
+	"github.com/nikkelma/hauler/pkg/log"
 
 	"github.com/google/go-containerregistry/pkg/name"
 )

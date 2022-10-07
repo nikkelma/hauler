@@ -12,9 +12,9 @@ import (
 
 	"github.com/google/go-containerregistry/pkg/name"
 
-	"github.com/rancherfederal/hauler/pkg/artifact"
-	"github.com/rancherfederal/hauler/pkg/content/file"
-	"github.com/rancherfederal/hauler/pkg/content/image"
+	"github.com/nikkelma/hauler/pkg/artifact"
+	"github.com/nikkelma/hauler/pkg/content/file"
+	"github.com/nikkelma/hauler/pkg/content/image"
 )
 
 var _ artifact.Collection = (*k3s)(nil)

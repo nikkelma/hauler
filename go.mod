@@ -1,4 +1,4 @@
-module github.com/rancherfederal/hauler
+module github.com/nikkelma/hauler
 
 go 1.17
 
