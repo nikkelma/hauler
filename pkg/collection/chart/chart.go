@@ -1,7 +1,6 @@
 package chart
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -9,6 +8,7 @@ import (
 	"strings"
 
 	gname "github.com/google/go-containerregistry/pkg/name"
+	"k8s.io/apimachinery/pkg/util/yaml"
 
 	"github.com/nikkelma/hauler/pkg/artifact"
 	"github.com/nikkelma/hauler/pkg/artifact/local"
@@ -138,7 +138,7 @@ func (c *tchart) dependentImages() error {
 
 			values := make(map[string]interface{})
 
-			decoder := json.NewDecoder(reader)
+			decoder := yaml.NewYAMLToJSONDecoder(reader)
 			if err := decoder.Decode(&values); err != nil {
 				return fmt.Errorf("could not parse values from file %s: %v", valuesFile, err)
 			}
