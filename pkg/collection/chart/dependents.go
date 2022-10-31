@@ -30,9 +30,33 @@ var defaultKnownImagePaths = []string{
 	"{.spec.containers[*].image}",
 }
 
+type ImagesInChartOption interface {
+	Apply(options *imagesInChartOptions)
+}
+
+type imagesInChartOptions struct {
+	Values map[string]interface{}
+}
+
+func WithValues(values map[string]interface{}) ImagesInChartOption {
+	return withValues(values)
+}
+
+type withValues map[string]interface{}
+
+func (o withValues) Apply(options *imagesInChartOptions) {
+	options.Values = o
+}
+
 // ImagesInChart will render a chart and identify all dependent images from it
-func ImagesInChart(c *helmchart.Chart) (v1alpha1.Images, error) {
-	objs, err := template(c)
+func ImagesInChart(c *helmchart.Chart, opts ...ImagesInChartOption) (v1alpha1.Images, error) {
+	opt := &imagesInChartOptions{}
+	for _, o := range opts {
+		o.Apply(opt)
+	}
+
+	objs, err := template(c, opt.Values)
+
 	if err != nil {
 		return v1alpha1.Images{}, err
 	}
@@ -69,13 +93,18 @@ func ImagesInChart(c *helmchart.Chart) (v1alpha1.Images, error) {
 		},
 	}
 
+	seenRefs := map[string]bool{}
+
 	for _, ref := range imageRefs {
-		ims.Spec.Images = append(ims.Spec.Images, v1alpha1.Image{Ref: ref})
+		if !seenRefs[ref] {
+			ims.Spec.Images = append(ims.Spec.Images, v1alpha1.Image{Ref: ref})
+			seenRefs[ref] = true
+		}
 	}
 	return ims, nil
 }
 
-func template(c *helmchart.Chart) ([]runtime.Object, error) {
+func template(c *helmchart.Chart, values map[string]interface{}) ([]runtime.Object, error) {
 	s := storage.Init(driver.NewMemory())
 
 	templateCfg := &action.Configuration{
@@ -86,10 +115,6 @@ func template(c *helmchart.Chart) ([]runtime.Object, error) {
 		Log:              func(format string, v ...interface{}) {},
 	}
 
-	// TODO: Do we need values if we're claiming this is best effort image detection?
-	//       Justification being: if users are relying on us to get images from their values, they could just add images to the []ImagesInChart spec of the Store api
-	vals := make(map[string]interface{})
-
 	client := action.NewInstall(templateCfg)
 	client.ReleaseName = "dry"
 	client.DryRun = true
@@ -97,7 +122,7 @@ func template(c *helmchart.Chart) ([]runtime.Object, error) {
 	client.ClientOnly = true
 	client.IncludeCRDs = true
 
-	release, err := client.Run(c, vals)
+	release, err := client.Run(c, values)
 	if err != nil {
 		return nil, err
 	}

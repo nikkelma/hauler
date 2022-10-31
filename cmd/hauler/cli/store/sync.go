@@ -150,8 +150,29 @@ func SyncCmd(ctx context.Context, o *SyncOpts, s *store.Store) error {
 					if err := yaml.Unmarshal(doc, &cfg); err != nil {
 						return err
 					}
-					for _, cfg := range cfg.Spec.Charts {
-						tc, err := tchart.NewChart(cfg.Name, cfg.RepoURL, cfg.Version)
+
+					var valuesOverrides []map[string]interface{}
+					var valuesFileOverrides []string
+
+					for chartIdx, chartCfg := range cfg.Spec.Charts {
+						for overrideIdx, override := range chartCfg.ValuesConfig.Overrides {
+							if override.Values != nil {
+								if override.ValuesFile != "" {
+									l.Warnf("found values and values file in override; ignoring values file")
+								}
+								valuesOverrides = append(valuesOverrides, override.Values)
+							} else if override.ValuesFile != "" {
+								valuesFileOverrides = append(valuesFileOverrides, override.ValuesFile)
+							} else {
+								l.Warnf("found no values or values file in chart %d (repo %q name %q) override %d",
+									chartIdx, chartCfg.RepoURL, chartCfg.Name, overrideIdx)
+							}
+						}
+					}
+
+					for _, chartCfg := range cfg.Spec.Charts {
+						tc, err := tchart.NewChart(chartCfg.Name, chartCfg.RepoURL, chartCfg.Version,
+							chartCfg.ValuesConfig.DisableDefault, valuesOverrides, valuesFileOverrides)
 						if err != nil {
 							return err
 						}
