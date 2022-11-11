@@ -35,7 +35,8 @@ type ImagesInChartOption interface {
 }
 
 type imagesInChartOptions struct {
-	Values map[string]interface{}
+	Values         map[string]interface{}
+	ExtraJSONPaths []string
 }
 
 func WithValues(values map[string]interface{}) ImagesInChartOption {
@@ -46,6 +47,18 @@ type withValues map[string]interface{}
 
 func (o withValues) Apply(options *imagesInChartOptions) {
 	options.Values = o
+}
+
+func WithExtraJSONPaths(jsonPaths []string) ImagesInChartOption {
+	return withExtraJSONPaths(jsonPaths)
+}
+
+type withExtraJSONPaths []string
+
+func (o withExtraJSONPaths) Apply(options *imagesInChartOptions) {
+	if len(o) != 0 {
+		options.ExtraJSONPaths = o
+	}
 }
 
 // ImagesInChart will render a chart and identify all dependent images from it
@@ -77,7 +90,14 @@ func ImagesInChart(c *helmchart.Chart, opts ...ImagesInChartOption) (v1alpha1.Im
 		j := jsonpath.New("")
 		j.AllowMissingKeys(true)
 
-		for _, p := range defaultKnownImagePaths {
+		allJSONPaths := make([]string, len(defaultKnownImagePaths))
+		copy(allJSONPaths, defaultKnownImagePaths)
+
+		if len(opt.ExtraJSONPaths) != 0 {
+			allJSONPaths = append(allJSONPaths, opt.ExtraJSONPaths...)
+		}
+
+		for _, p := range allJSONPaths {
 			r, err := parseJSONPath(obj, j, p)
 			if err != nil {
 				continue

@@ -38,10 +38,11 @@ type ThickChartSpec struct {
 }
 
 type ThickChart struct {
-	Name         string                 `json:"name"`
-	RepoURL      string                 `json:"repoURL"`
-	Version      string                 `json:"version"`
-	ValuesConfig ThickChartValuesConfig `json:"valuesConfig,omitempty"`
+	Name           string                 `json:"name"`
+	RepoURL        string                 `json:"repoURL"`
+	Version        string                 `json:"version"`
+	ValuesConfig   ThickChartValuesConfig `json:"valuesConfig,omitempty"`
+	ExtraJSONPaths []string               `json:"extraJSONPaths,omitempty"`
 }
 
 type ThickChartValuesConfig struct {

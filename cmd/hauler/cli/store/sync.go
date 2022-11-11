@@ -172,7 +172,7 @@ func SyncCmd(ctx context.Context, o *SyncOpts, s *store.Store) error {
 
 					for _, chartCfg := range cfg.Spec.Charts {
 						tc, err := tchart.NewChart(chartCfg.Name, chartCfg.RepoURL, chartCfg.Version,
-							chartCfg.ValuesConfig.DisableDefault, valuesOverrides, valuesFileOverrides)
+							chartCfg.ValuesConfig.DisableDefault, valuesOverrides, valuesFileOverrides, chartCfg.ExtraJSONPaths)
 						if err != nil {
 							return err
 						}

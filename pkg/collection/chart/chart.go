@@ -20,11 +20,12 @@ var _ artifact.Collection = (*tchart)(nil)
 
 // tchart is a thick chart that includes all the dependent images as well as the chart itself
 type tchart struct {
-	name         string
-	repo         string
-	version      string
-	chart        *chart.Chart
-	valuesConfig tchartValuesConfig
+	name           string
+	repo           string
+	version        string
+	chart          *chart.Chart
+	valuesConfig   tchartValuesConfig
+	extraJSONPaths []string
 
 	computed bool
 	contents map[gname.Reference]artifact.OCI
@@ -43,6 +44,7 @@ func NewChart(
 	disableDefaults bool,
 	valuesOverrides []map[string]interface{},
 	valuesFileOverrides []string,
+	extraJSONPaths []string,
 ) (artifact.Collection, error) {
 	o, err := chart.NewChart(name, repo, version)
 	if err != nil {
@@ -59,7 +61,8 @@ func NewChart(
 			valuesOverrides:     valuesOverrides,
 			valuesFileOverrides: valuesFileOverrides,
 		},
-		contents: make(map[gname.Reference]artifact.OCI),
+		extraJSONPaths: extraJSONPaths,
+		contents:       make(map[gname.Reference]artifact.OCI),
 	}, nil
 }
 
@@ -155,8 +158,12 @@ func (c *tchart) dependentImages() error {
 	seenImageRefs := map[string]bool{}
 
 	for _, values := range allOverrides {
-		valuesOpt := WithValues(values)
-		imgs, err := ImagesInChart(ch, valuesOpt)
+		imagesOpts := []ImagesInChartOption{WithValues(values)}
+		if len(c.extraJSONPaths) != 0 {
+			imagesOpts = append(imagesOpts, WithExtraJSONPaths(c.extraJSONPaths))
+		}
+
+		imgs, err := ImagesInChart(ch, imagesOpts...)
 		if err != nil {
 			return err
 		}
